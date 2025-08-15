@@ -4,13 +4,20 @@
 
 <h1>Products</h1>
 
+<%= link_to new_product_path do %>
+  <button>New product</button>
+<% end %>
+
+
+<hr>
+
 <div id="products">
   <% @products.each do |product| %>
     <%= render product %>
     <p>
+      <%= link_to 'Edit this Product', edit_product_path(product) %> |
       <%= link_to "Show this product", product %>
     </p>
   <% end %>
 </div>
 
-<%= link_to "New product", new_product_path %>

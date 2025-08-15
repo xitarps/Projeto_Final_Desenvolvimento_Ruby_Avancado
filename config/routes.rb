@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root "products#index"
   resources :products
   resources :csv_reports, only: %i[ index show create ]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
