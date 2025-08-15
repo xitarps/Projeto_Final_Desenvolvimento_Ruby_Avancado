@@ -1,4 +1,11 @@
 <h1>Reports</h1>
+
+<p>
+  <%= form_with model: false, url: csv_reports_path do |f| %>
+    <%= f.submit 'Generate Products CSV Report' %>
+  <% end %>
+</p>
+
 <% @reports.each do |report| %>
-  <%= link_to report.id, report_path(report) %><br>
+  <%= link_to report.id, csv_report_path(report) %><br>
 <% end %>
