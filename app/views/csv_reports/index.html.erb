@@ -1,0 +1,4 @@
+<h1>Reports</h1>
+<% @reports.each do |report| %>
+  <%= link_to report.id, report_path(report) %><br>
+<% end %>
