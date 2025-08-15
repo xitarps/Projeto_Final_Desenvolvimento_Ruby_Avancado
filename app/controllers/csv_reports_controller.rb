@@ -1,6 +1,9 @@
 class CsvReportsController < ApplicationController
+  DEFAULT_QUANTITY = 3
+
   def index
-    @reports = CsvReport.all
+    @quantity = params[:all] ? CsvReport.count : DEFAULT_QUANTITY
+    @reports = CsvFileCollection.new(CsvReport.all.order(created_at: :desc)).lazy
   end
 
   def show
