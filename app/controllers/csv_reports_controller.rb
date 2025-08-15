@@ -9,11 +9,7 @@ class CsvReportsController < ApplicationController
   end
 
   def create
-    report_path = ProductsCsvReporter.call(Product.all)
-
-    csv_report = CsvReport.create
-
-    csv_report.attach_csv_report_file(report_path)
+    CreateProductCsvReportJob.perform_later(Product.all.pluck(:id))
 
     redirect_to csv_reports_path
   end

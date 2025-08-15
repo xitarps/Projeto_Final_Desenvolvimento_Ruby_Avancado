@@ -4,6 +4,9 @@
   <%= form_with model: false, url: csv_reports_path do |f| %>
     <%= f.submit 'Generate Products CSV Report' %>
   <% end %>
+  <span>
+    In case of generating one new report, it may take a while... take some coffe and refresh the page from time to time :)
+  </span>
 </p>
 
 <% @reports.each do |report| %>
