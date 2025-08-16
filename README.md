@@ -25,7 +25,7 @@ Github: https://github.com/xitarps <br>
 
 ## Subindo o projeto
 
-Em um terminal execute:<br>
+Após clonar o repositório, em um terminal execute:<br>
 
 Configurtando:
 
@@ -50,6 +50,9 @@ Em outro terminal execute:
 bundle exec rake solid_queue:start
 ```
 
+Acessar o endereço no browser:<br>
+http://localhost:3000
+
 ## Objetivos do projeto
 Implementar:
 1. DSL (Domain-Specific Language)
@@ -62,3 +65,39 @@ Arquivos/tecnologias de interesse:
 2. app/models/csv_file_collection.rb
 3. SolidQueue
 4. Rails(MVC/Job/Commits)
+
+## Detalhamento do Reporter e DSL
+
+
+Define campos que terão seus valores carregados para o CSV
+```
+fields :name, :price
+```
+
+Define caminho que salvará o arquivo CSV<br>
+*no caso aqui removemos do tmp ao utilizar o activeStorage(app/models/csv_report.rb:22)
+```
+file_path "#{Rails.root}/tmp/"
+```
+
+Define tipo de escrita do CSV<br>
+Pode ser trocado para :append, assim não concatena ao inves de apagar o conteudo anterior
+```
+mode :write
+```
+
+Define a presença do cabeçalho no CSV(true/false)
+```
+write_headers true
+```
+
+Define quais os atributos que serão utilizados no cabeçalho do CSV
+```
+headers :name, :price
+```
+
+Define qual o separador utilizado no CSV<br>
+*ex: excel teve bons resultados com ';'
+```
+column_separator ","
+```
